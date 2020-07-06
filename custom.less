@@ -1,0 +1,218 @@
+@background: #FAF9F7;
+@color-normal: #52555d;
+@color-light: #b0b6c6;
+@color-primary: #9AD1ED;
+@color-border: #e5e5e5;
+
+body{
+    background-color: @background;
+    color: @color-normal;
+    overflow-x: hidden;
+}
+button{
+    cursor: pointer!important;
+    &:focus{outline: none!important;}
+    border-color: @color-border;
+    &.ui-state-hover{ border-color: @color-border; }
+}
+
+
+.container-fluid{padding-top: 20px;}
+// Navbar stuff
+.navbar{
+    display: none;
+    ul{
+        li{
+            &:last-child, a.prefs{display: none;}
+        }
+    }
+
+
+    #loading{
+        position: fixed;
+        bottom: 0px;
+        right: 10px;
+        z-index: 2;
+    }
+}
+
+
+// Calendar
+#content{
+    width: 100%;
+    #calendar_view{
+        max-width: 1000px;
+        margin: 0 auto;
+	.fc-list-empty{
+	    font-size: 2em;
+	    color: @color-light;
+	}
+    }
+    td.ui-widget-content{
+        background: white;
+        border-color: @color-border;
+        &.fc-today{
+            background: @color-primary;
+        }
+    }
+    .fc-today .fc-day-number{color: white!important;}
+
+    .fc-day-grid-event .fc-content{
+        background: #f3f1ed;
+        margin: -1px -2px -1px 2px;
+        color: #52555d;
+        padding-left: 3px;
+        text-overflow: ellipsis;
+    }
+
+    .fc-head-container{
+        border-width: 0;
+    }    
+    .fc th{
+        padding: 5px 5px 5px 0;
+        color: @color-light;
+        border-width: 0;
+        text-align: right;
+    }    
+    .fc-ltr .fc-basic-view .fc-day-top .fc-day-number{ font-size: 14px; color: #52555d;}
+    .fc-day-top.fc-other-month {
+        opacity: 1;
+        a{ color: @color-light!important;}
+    }    
+    .fc-basic-view .fc-body .fc-row{
+        max-height: 135px;
+    }    
+    .fc-scroller.fc-day-grid-container{
+        height: inherit!important;
+    }
+    .fc-day-grid-event .fc-time{
+	font-weight: normal;
+    }
+}        
+.fc-now-indicator{
+    border: 1px solid #f26d6d;
+}        
+
+//topbar 
+.fc-toolbar{
+    .fc-today-button.ui-state-disabled{border-color: @color-border; opacity: 1; color: @color-border; }
+    .fc-left .fc-button-group button{
+        background: inherit;
+        border: none;
+    }    
+    .fc-center .btn.fa-calendar{display: none;}
+    .fc-right{
+        .fc-button-group{
+            button{
+                border-radius: 0;
+            }
+            button:first-child{
+                border-bottom-left-radius: 10px;
+                border-top-left-radius: 10px;
+                padding-left: 10px;
+            }
+            button:last-child{
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                padding-right: 10px;
+            }
+        }
+    }    
+         
+    button{
+        border-radius: 15px;
+        padding: 0 15px;
+        background: inherit;
+    }    
+    button.ui-state-active{
+        background: @color-primary;
+        color: white;
+    }    
+    button.fc-today-button{
+        color: @color-primary;
+        border: 2px solid;
+        text-transform: capitalize;
+    }    
+}
+
+// sidebar
+#sidebar{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+    width: initial!important;
+         
+    .panel-heading{display: none;}
+    .block.calendar_list{display: none;}
+    #shortcuts{
+        margin: 0;
+        width: inherit;
+        #shortcut_add_event{
+            font-size: 0;
+            width: 50px;
+            height: 50px;           
+            border-radius: 50px;
+            background: @color-primary;
+            border: 0;
+            padding: 0;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            i{
+                color: @background;
+                font-size: 20px;
+                display: block;
+                width: 40px;
+                margin: auto;
+            }
+        }
+    }    
+}        
+         
+         
+         
+         
+// modal
+.ui-widget-overlay{
+    background: rgba(0,0,0,0.6);
+    opacity: 1;
+}
+.ui-dialog{
+    .ui-widget-header{
+	border-width: 0;
+	background: @color-primary;
+	margin: -5px -5px 10px -5px;
+	padding: 15px 20px!important;
+	font-size: initial;
+	line-height: initial;
+
+	button{
+	    border: none;
+	    background: inherit;
+	    margin-right: 10px;
+	}
+    }
+    .ui-dialog-buttonpane{
+	.ui-dialog-buttonset{
+	    button{
+		.ui-icon{display: none;}
+		.ui-button-text{
+		    padding: 5px 20px;
+		}
+	    }	    
+	}
+    }
+}
+
+/* ANIMATION */
+.fc-view > table{
+    animation: slide 0.2s ease-out 1;
+}
+@keyframes slide {
+    0% {
+	transform: translateX(30px);
+    }
+    100% {
+	transform: translateX(0);
+	opacity: 1;
+    }
+}
